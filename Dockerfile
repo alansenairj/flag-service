@@ -13,6 +13,7 @@ RUN apt-get update && \
 WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
 COPY app.py .
+COPY db/ db/
 ENV PATH="/app/.venv/bin:$PATH"
 EXPOSE 8002
 CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8002", "--workers", "2"]
