@@ -3,7 +3,7 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 ENV TZ=America/Sao_Paulo
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata postgresql-client && \
