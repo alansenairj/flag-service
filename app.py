@@ -29,6 +29,8 @@ class BRJSONProvider(DefaultJSONProvider):
 
 
 app = Flask(__name__)
+import telemetry  # noqa: E402
+telemetry.setup(app, "flag-service")
 app.json_provider_class = BRJSONProvider
 app.json = BRJSONProvider(app)
 # Flask 3.0 escapa caracteres não-ASCII por padrão (á → á). Desativado para respostas legíveis.
